@@ -8,11 +8,9 @@ public class ColorChanger : MonoBehaviour
 
     private Renderer _colorRenderer;
     private Color _startColor;
-    private Transform _cellTransform;
 
     private void Start()
     {
-        _cellTransform = GetComponent<Transform>();
         _colorRenderer = GetComponent<Renderer>();
         _startColor = _colorRenderer.material.color;
     }
@@ -22,8 +20,6 @@ public class ColorChanger : MonoBehaviour
         if(other.TryGetComponent<Match>(out Match match))
         {
             _colorRenderer.material.color = _endColor;
-            match.SetCollision(true);
-            match.SetCellPosition(_cellTransform.transform.position);
         }
     }
 
@@ -32,7 +28,6 @@ public class ColorChanger : MonoBehaviour
         if (other.TryGetComponent<Match>(out Match match))
         {
             _colorRenderer.material.color = _startColor;
-            match.SetCollision(false);
         }
     }
 }
