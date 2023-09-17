@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class MatchMover : MonoBehaviour
 {
+    [SerializeField] private LayerMask layerMask;
+
     private Vector3 _startPosition;
     private Vector3 _cellPosition;
     private Coroutine _moveControl;
@@ -27,21 +29,23 @@ public class MatchMover : MonoBehaviour
 
     private void OnMouseDown()
     {
-        /*
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.collider.TryGetComponent<Cell>(out Cell cell))
-            {
-                cell.SetCell(false);               
-            }
-        }
-        */
         if (_moveControl != null)
         {
             StopCoroutine(_moveControl);
+        }
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        {
+            if (hit.collider.TryGetComponent<Cell>(out Cell cell))
+            {
+                if (cell.isOccupied == true)
+                {
+                    cell.Occupy(false);
+                }           
+            }
         }
     }
 
@@ -62,7 +66,7 @@ public class MatchMover : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
             if (hit.collider.TryGetComponent<Cell>(out Cell cell))
             {
@@ -76,11 +80,11 @@ public class MatchMover : MonoBehaviour
                     CoroutineControl(_startPosition, transform.position);
                 }
             }
-            else
-            {
-                CoroutineControl(_startPosition, transform.position);
-            }
-        }        
+        }
+        else
+        {
+            CoroutineControl(_startPosition, transform.position);
+        }
     }
     
     private IEnumerator PlaceChanger(Vector3 target, Vector3 currentPosition)

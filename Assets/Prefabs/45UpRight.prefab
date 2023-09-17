@@ -105,7 +105,6 @@ GameObject:
   - component: {fileID: 2015035499619528029}
   - component: {fileID: 7359168008006715876}
   - component: {fileID: 124744188132401545}
-  - component: {fileID: 7128970113474968976}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -179,27 +178,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7128970113474968976
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3652142605673701539}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3733625346606522045
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063896899a1e8a247860d55a8a6f1bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &-3400119582687556833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,7 +327,6 @@ GameObject:
   - component: {fileID: 9144305565083428312}
   - component: {fileID: 3658226740311384176}
   - component: {fileID: 4180597233738990733}
-  - component: {fileID: 5581938740041809924}
   - component: {fileID: 3851741170392908823}
   m_Layer: 0
   m_Name: Cube (1)
@@ -420,27 +400,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5581938740041809924
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8607599448975671629}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &3851741170392908823
 SphereCollider:
   m_ObjectHideFlags: 0
