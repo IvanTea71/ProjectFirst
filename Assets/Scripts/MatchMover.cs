@@ -9,18 +9,7 @@ public class MatchMover : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
 
     private Vector3 _startPosition;
-    private Vector3 _cellPosition;
     private Coroutine _moveControl;
-
-    private void OnEnable()
-    {
-        Cell.Collisioned += OnGetCollision;
-    }
-
-    private void OnDisable()
-    {
-        Cell.Collisioned -= OnGetCollision;
-    }
 
     private void Start()
     {
@@ -41,10 +30,10 @@ public class MatchMover : MonoBehaviour
         {
             if (hit.collider.TryGetComponent<Cell>(out Cell cell))
             {
-                if (cell.isOccupied == true)
+                if (cell.IsOccupied == true)
                 {
                     cell.Occupy(false);
-                }           
+                }
             }
         }
     }
@@ -70,9 +59,9 @@ public class MatchMover : MonoBehaviour
         {
             if (hit.collider.TryGetComponent<Cell>(out Cell cell))
             {
-                if (cell.isOccupied == false)
+                if (cell.IsOccupied == false)
                 {
-                    CoroutineControl(_cellPosition, transform.position);
+                    CoroutineControl(cell.transform.position, transform.position);
                     cell.Occupy(true);
                 }
                 else
@@ -101,11 +90,6 @@ public class MatchMover : MonoBehaviour
 
             yield return null;
         }
-    }
-
-    private void OnGetCollision(Vector3 cellPosition)
-    {
-        _cellPosition = cellPosition;
     }
 
     public void CoroutineControl(Vector3 target, Vector3 currentPosition)
